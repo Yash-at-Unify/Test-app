@@ -19,5 +19,5 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t test-app:ci
+          docker build -t test-app:ci .
       
