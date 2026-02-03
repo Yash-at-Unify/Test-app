@@ -25,8 +25,7 @@ jobs:
 
       - name: Start FastAPI app
         run: |
-          export PYTHONPATH=$PYTHONPATH:.
-          nohup uvicorn app.main:app --host 127.0.0.1 --port 8001 > uvicorn.log 2>&1 & sleep 10
+          uvicorn main:app --host 127.0.0.1 --port 8001 > uvicorn.log 2>&1 & sleep 10
 
       - name: Health check
         run: |
