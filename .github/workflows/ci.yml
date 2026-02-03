@@ -25,8 +25,9 @@ jobs:
 
       - name: Start FastAPI app
         run: |
-          uvicorn app.main:app --host 127.0.0.1 --port 8001 & sleep 5
+          nohup uvicorn app.main:app --host 127.0.0.1 --port 8001 > uvicorn.log 2>&1 &
+          sleep 10
 
       - name: Health check
         run: |
-          curl --fail http://127.0.0.1:8001/health
+          curl --retry 5 --retry-delay 2 --fail http://127.0.0.1:8001/health
